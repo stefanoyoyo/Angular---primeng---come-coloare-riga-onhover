@@ -1,0 +1,29 @@
+<p-table
+	[rowHover]="true"	
+  [columns]="cols"
+  [value]="brands"
+  [(selection)]="selected"
+  dataKey="vin"
+  selectionMode="multiple"
+>
+  <ng-template  pTemplate="header" let-columns>
+    <tr >
+      <th style="width: 3em">
+        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+      </th>
+      <th *ngFor="let col of columns">
+        {{ col.header }}
+      </th>
+    </tr> 
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
+    <tr class="hover-row" [class.ui-state-highlight]="rowData === highlighted">
+      <td class="hover-row">
+        <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+      </td>
+      <td *ngFor="let col of columns">
+        <a (mouseenter)="highlighted = rowData"> {{ rowData[col.field] }}</a>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
