@@ -22,7 +22,7 @@
         <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
       </td>
       <td *ngFor="let col of columns">
-        <a (mouseenter)="highlighted = rowData"> {{ rowData[col.field] }}</a>
+        <a (mouseenter)="highlighted = rowData" (mouseleave)="highlighted = null">  {{ rowData[col.field] }}</a>
       </td>
     </tr>
   </ng-template>
